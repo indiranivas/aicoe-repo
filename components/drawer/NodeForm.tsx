@@ -210,12 +210,13 @@ export default function NodeForm({ node, onClose }: Props) {
           </Field>
           <Field label="Owner">
             <div className="relative">
-              <select aria-label="Owner" value={form.owner} onChange={(e) => update("owner", e.target.value)} className={selectCls}>
+              <select aria-label="Owner" value={teamMembers.find((u) => u.name === form.owner)?.id ?? ""} onChange={(e) => {
+                const member = teamMembers.find((u) => u.id === e.target.value)
+                update("owner", member?.name ?? "")
+                update("assigneeId" as keyof ActivityNode, e.target.value || null)
+              }} className={selectCls}>
                 <option value="">Unassigned</option>
-                {teamMembers.map((u) => <option key={u.id} value={u.name}>{u.name}</option>)}
-                {form.owner && !teamMembers.some((u) => u.name === form.owner) && (
-                  <option value={form.owner}>{form.owner}</option>
-                )}
+                {teamMembers.map((u) => <option key={u.id} value={u.id}>{u.name}</option>)}
               </select>
               <ChevronIcon />
             </div>

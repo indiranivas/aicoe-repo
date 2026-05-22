@@ -21,6 +21,7 @@ export default function AddNodeModal({ onClose }: Props) {
   const [status, setStatus] = useState<NodeStatus>("Idea")
   const [description, setDescription] = useState("")
   const [owner, setOwner] = useState("")
+  const [ownerName, setOwnerName] = useState("")
   const [progress, setProgress] = useState(0)
   const [saving, setSaving] = useState(false)
   const [titleError, setTitleError] = useState(false)
@@ -49,7 +50,8 @@ export default function AddNodeModal({ onClose }: Props) {
       title: title.trim(),
       description,
       category,
-      owner,
+      owner: ownerName,
+      assigneeId: owner || null,
       status,
       progress,
       priority: "Medium",
@@ -164,12 +166,16 @@ export default function AddNodeModal({ onClose }: Props) {
             <div className="relative">
               <select
                 value={owner}
-                onChange={(e) => setOwner(e.target.value)}
+                onChange={(e) => {
+                  const member = teamMembers.find((u) => u.id === e.target.value)
+                  setOwner(e.target.value)
+                  setOwnerName(member?.name ?? "")
+                }}
                 className={selectCls}
               >
                 <option value="">Select owner</option>
                 {teamMembers.map((u) => (
-                  <option key={u.id} value={u.name}>{u.name}</option>
+                  <option key={u.id} value={u.id}>{u.name}</option>
                 ))}
               </select>
               <ChevronIcon />
