@@ -4,9 +4,9 @@ import { requireAuth } from "@/lib/auth-helpers"
 import { createUserSchema, updateSettingSchema } from "@/lib/validations"
 import bcrypt from "bcryptjs"
 
-// GET /api/users — list all users (admin/manager only)
+// GET /api/users — list all users (any authenticated user)
 export async function GET() {
-  const { error, session } = await requireAuth("manager")
+  const { error, session } = await requireAuth()
   if (error) return error
 
   try {

@@ -33,6 +33,13 @@ export default function NodeForm({ node, onClose }: Props) {
   const [updateAuthor, setUpdateAuthor] = useState("")
   const [newMilestone, setNewMilestone] = useState("")
   const [newMilestoneDue, setNewMilestoneDue] = useState("")
+  const [teamMembers, setTeamMembers] = useState<{ id: string; name: string }[]>([])
+
+  useEffect(() => {
+    fetch("/api/users").then((r) => r.ok ? r.json() : []).then((users) => {
+      if (Array.isArray(users)) setTeamMembers(users.map((u: { id: string; name: string }) => ({ id: u.id, name: u.name })))
+    }).catch(() => {})
+  }, [])
 
   useEffect(() => {
     setForm(node)
@@ -202,7 +209,16 @@ export default function NodeForm({ node, onClose }: Props) {
             </div>
           </Field>
           <Field label="Owner">
-            <input value={form.owner} onChange={(e) => update("owner", e.target.value)} className={inputCls} placeholder="Name or team" />
+            <div className="relative">
+              <select aria-label="Owner" value={form.owner} onChange={(e) => update("owner", e.target.value)} className={selectCls}>
+                <option value="">Unassigned</option>
+                {teamMembers.map((u) => <option key={u.id} value={u.name}>{u.name}</option>)}
+                {form.owner && !teamMembers.some((u) => u.name === form.owner) && (
+                  <option value={form.owner}>{form.owner}</option>
+                )}
+              </select>
+              <ChevronIcon />
+            </div>
           </Field>
         </div>
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { toast } from "sonner"
 import { useGraphStore } from "@/store/graphStore"
 import { cn } from "@/lib/cn"
@@ -24,6 +24,13 @@ export default function AddNodeModal({ onClose }: Props) {
   const [progress, setProgress] = useState(0)
   const [saving, setSaving] = useState(false)
   const [titleError, setTitleError] = useState(false)
+  const [teamMembers, setTeamMembers] = useState<{ id: string; name: string }[]>([])
+
+  useEffect(() => {
+    fetch("/api/users").then((r) => r.ok ? r.json() : []).then((users) => {
+      if (Array.isArray(users)) setTeamMembers(users.map((u: { id: string; name: string }) => ({ id: u.id, name: u.name })))
+    }).catch(() => {})
+  }, [])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -154,12 +161,19 @@ export default function AddNodeModal({ onClose }: Props) {
           </Field>
 
           <Field label="Owner">
-            <input
-              value={owner}
-              onChange={(e) => setOwner(e.target.value)}
-              placeholder="Name or team"
-              className={inputCls}
-            />
+            <div className="relative">
+              <select
+                value={owner}
+                onChange={(e) => setOwner(e.target.value)}
+                className={selectCls}
+              >
+                <option value="">Select owner</option>
+                {teamMembers.map((u) => (
+                  <option key={u.id} value={u.name}>{u.name}</option>
+                ))}
+              </select>
+              <ChevronIcon />
+            </div>
           </Field>
 
           <Field label={`Progress — ${progress}%`}>
