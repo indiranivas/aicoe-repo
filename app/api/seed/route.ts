@@ -24,6 +24,8 @@ export async function POST() {
           priority: "Medium", progress: n.progress ?? 0,
           tags: n.tags ?? [], notes: n.notes ?? "",
           links: n.links ?? [], artifacts: n.artifacts ?? [],
+          startDate: n.startDate ? new Date(n.startDate) : null,
+          dueDate: n.dueDate ? new Date(n.dueDate) : null,
           positionX: n.position?.x ?? 0, positionY: n.position?.y ?? 0,
           createdAt: new Date(n.createdAt), updatedAt: new Date(n.updatedAt),
         },

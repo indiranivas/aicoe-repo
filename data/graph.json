@@ -8,6 +8,8 @@
       "owner": "Priya Sharma",
       "status": "In Progress",
       "progress": 65,
+      "startDate": "2026-01-15T00:00:00Z",
+      "dueDate": "2026-07-15T00:00:00Z",
       "createdAt": "2026-01-15T10:00:00Z",
       "updatedAt": "2026-05-10T14:30:00Z",
       "tags": [
@@ -37,6 +39,8 @@
       "owner": "James Liu",
       "status": "Planned",
       "progress": 20,
+      "startDate": "2026-03-01T00:00:00Z",
+      "dueDate": "2026-08-01T00:00:00Z",
       "createdAt": "2026-02-01T09:00:00Z",
       "updatedAt": "2026-04-22T11:00:00Z",
       "tags": [
@@ -64,6 +68,8 @@
       "owner": "Aditya Rao",
       "status": "In Progress",
       "progress": 50,
+      "startDate": "2026-01-20T00:00:00Z",
+      "dueDate": "2026-06-30T00:00:00Z",
       "createdAt": "2026-01-20T08:00:00Z",
       "updatedAt": "2026-05-15T16:00:00Z",
       "tags": [
@@ -94,6 +100,8 @@
       "owner": "Nina Okafor",
       "status": "Completed",
       "progress": 100,
+      "startDate": "2025-11-01T00:00:00Z",
+      "dueDate": "2026-03-01T00:00:00Z",
       "createdAt": "2025-11-01T00:00:00Z",
       "updatedAt": "2026-03-01T00:00:00Z",
       "tags": [
@@ -121,6 +129,8 @@
       "owner": "Nina Okafor",
       "status": "In Progress",
       "progress": 70,
+      "startDate": "2026-01-10T00:00:00Z",
+      "dueDate": "2026-06-15T00:00:00Z",
       "createdAt": "2026-01-10T00:00:00Z",
       "updatedAt": "2026-05-01T00:00:00Z",
       "tags": [
@@ -148,6 +158,8 @@
       "owner": "Carlos Mendez",
       "status": "In Progress",
       "progress": 80,
+      "startDate": "2026-02-15T00:00:00Z",
+      "dueDate": "2026-05-30T00:00:00Z",
       "createdAt": "2026-02-15T00:00:00Z",
       "updatedAt": "2026-05-18T00:00:00Z",
       "tags": [
@@ -175,6 +187,8 @@
       "owner": "Sarah Chen",
       "status": "Completed",
       "progress": 100,
+      "startDate": "2025-10-01T00:00:00Z",
+      "dueDate": "2026-02-28T00:00:00Z",
       "createdAt": "2025-10-01T00:00:00Z",
       "updatedAt": "2026-02-28T00:00:00Z",
       "tags": [
@@ -205,6 +219,8 @@
       "owner": "Rahul Nair",
       "status": "In Progress",
       "progress": 45,
+      "startDate": "2026-03-01T00:00:00Z",
+      "dueDate": "2026-08-15T00:00:00Z",
       "createdAt": "2026-03-01T00:00:00Z",
       "updatedAt": "2026-05-20T00:00:00Z",
       "tags": [
@@ -232,6 +248,8 @@
       "owner": "Rahul Nair",
       "status": "In Progress",
       "progress": 60,
+      "startDate": "2026-02-10T00:00:00Z",
+      "dueDate": "2026-07-01T00:00:00Z",
       "createdAt": "2026-02-10T00:00:00Z",
       "updatedAt": "2026-05-12T00:00:00Z",
       "tags": [
@@ -259,6 +277,8 @@
       "owner": "Aditya Rao",
       "status": "Planned",
       "progress": 30,
+      "startDate": "2026-04-01T00:00:00Z",
+      "dueDate": "2026-09-01T00:00:00Z",
       "createdAt": "2026-04-01T00:00:00Z",
       "updatedAt": "2026-05-05T00:00:00Z",
       "tags": [
