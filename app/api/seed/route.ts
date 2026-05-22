@@ -11,9 +11,17 @@ export async function POST() {
     }
     const { nodes, edges } = JSON.parse(fs.readFileSync(filePath, "utf-8"))
 
-    const existing = await prisma.activityNode.count()
+    const existing = await prisma.activityNode.count({ where: { deletedAt: null } })
     if (existing > 0) {
       return NextResponse.json({ message: "DB already seeded", count: existing })
+    }
+
+    // Restore any soft-deleted nodes
+    await prisma.activityNode.updateMany({ where: { deletedAt: { not: null } }, data: { deletedAt: null } })
+
+    const activeCount = await prisma.activityNode.count({ where: { deletedAt: null } })
+    if (activeCount > 0) {
+      return NextResponse.json({ message: "Restored soft-deleted nodes", count: activeCount })
     }
 
     for (const n of nodes) {
