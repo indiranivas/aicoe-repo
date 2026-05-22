@@ -1,0 +1,346 @@
+{
+  "nodes": [
+    {
+      "id": "node-001",
+      "title": "HR AI Assistant",
+      "description": "Internal AI-powered assistant for HR queries, onboarding support, and policy lookups. Reduces HR ticket volume by enabling self-service.",
+      "category": "Customer Zero",
+      "owner": "Priya Sharma",
+      "status": "In Progress",
+      "progress": 65,
+      "createdAt": "2026-01-15T10:00:00Z",
+      "updatedAt": "2026-05-10T14:30:00Z",
+      "tags": [
+        "hr",
+        "chatbot",
+        "internal",
+        "self-service"
+      ],
+      "notes": "Pilot with 50 users in HR dept. Feedback mostly positive. Need to add policy document ingestion.",
+      "dependencies": [
+        "node-004"
+      ],
+      "links": [],
+      "artifacts": [
+        "HR AI Brief v2.pdf"
+      ],
+      "position": {
+        "x": 150,
+        "y": 200
+      }
+    },
+    {
+      "id": "node-002",
+      "title": "Marketing Content AI",
+      "description": "Generative AI tooling for drafting campaign briefs, social copy, and email sequences. Integrated into existing marketing workflows.",
+      "category": "Customer Zero",
+      "owner": "James Liu",
+      "status": "Planned",
+      "progress": 20,
+      "createdAt": "2026-02-01T09:00:00Z",
+      "updatedAt": "2026-04-22T11:00:00Z",
+      "tags": [
+        "marketing",
+        "genai",
+        "content",
+        "automation"
+      ],
+      "notes": "Waiting on prompt framework from R&D before starting implementation.",
+      "dependencies": [
+        "node-009"
+      ],
+      "links": [],
+      "artifacts": [],
+      "position": {
+        "x": 150,
+        "y": 420
+      }
+    },
+    {
+      "id": "node-003",
+      "title": "AI for SDLC",
+      "description": "Reusable accelerator pack embedding AI at every stage of the software delivery lifecycle: requirements, code gen, review, testing, and release notes.",
+      "category": "Offering Creation",
+      "owner": "Aditya Rao",
+      "status": "In Progress",
+      "progress": 50,
+      "createdAt": "2026-01-20T08:00:00Z",
+      "updatedAt": "2026-05-15T16:00:00Z",
+      "tags": [
+        "sdlc",
+        "accelerator",
+        "devops",
+        "offering"
+      ],
+      "notes": "Code review module complete. Working on test generation now.",
+      "dependencies": [
+        "node-008",
+        "node-009"
+      ],
+      "links": [],
+      "artifacts": [
+        "SDLC Accelerator Deck.pptx"
+      ],
+      "position": {
+        "x": 461.94563106796113,
+        "y": 483.93864077669895
+      }
+    },
+    {
+      "id": "node-004",
+      "title": "Responsible AI Policy",
+      "description": "Formal policy governing AI use across the organization: fairness, transparency, data privacy, human oversight, and escalation procedures.",
+      "category": "AI Governance",
+      "owner": "Nina Okafor",
+      "status": "Completed",
+      "progress": 100,
+      "createdAt": "2025-11-01T00:00:00Z",
+      "updatedAt": "2026-03-01T00:00:00Z",
+      "tags": [
+        "policy",
+        "governance",
+        "compliance",
+        "responsible-ai"
+      ],
+      "notes": "Ratified by leadership. Next review scheduled Q4 2026.",
+      "dependencies": [],
+      "links": [],
+      "artifacts": [
+        "Responsible AI Policy v1.2.pdf"
+      ],
+      "position": {
+        "x": 880,
+        "y": 100
+      }
+    },
+    {
+      "id": "node-005",
+      "title": "AI Governance Standards",
+      "description": "Technical standards defining model evaluation criteria, bias testing requirements, logging mandates, and model card templates.",
+      "category": "AI Governance",
+      "owner": "Nina Okafor",
+      "status": "In Progress",
+      "progress": 70,
+      "createdAt": "2026-01-10T00:00:00Z",
+      "updatedAt": "2026-05-01T00:00:00Z",
+      "tags": [
+        "standards",
+        "model-evaluation",
+        "bias",
+        "compliance"
+      ],
+      "notes": "Model card template finalized. Bias testing criteria in review.",
+      "dependencies": [
+        "node-004"
+      ],
+      "links": [],
+      "artifacts": [],
+      "position": {
+        "x": 880,
+        "y": 320
+      }
+    },
+    {
+      "id": "node-006",
+      "title": "AI Rapid Prototyping Program",
+      "description": "8-week sprint program to build PoCs for business units. Provides hands-on AI support from ideation through working prototype delivery.",
+      "category": "Enablement & Support",
+      "owner": "Carlos Mendez",
+      "status": "In Progress",
+      "progress": 80,
+      "createdAt": "2026-02-15T00:00:00Z",
+      "updatedAt": "2026-05-18T00:00:00Z",
+      "tags": [
+        "prototyping",
+        "poc",
+        "enablement",
+        "sprint"
+      ],
+      "notes": "Cohort 2 in progress. 4 PoCs active. One escalated to full project.",
+      "dependencies": [],
+      "links": [],
+      "artifacts": [
+        "PoC Intake Form.docx"
+      ],
+      "position": {
+        "x": 150,
+        "y": 640
+      }
+    },
+    {
+      "id": "node-007",
+      "title": "AI Foundations Training",
+      "description": "Internal training curriculum covering AI literacy, prompt engineering basics, responsible AI principles, and use-case identification for non-technical staff.",
+      "category": "Enablement & Support",
+      "owner": "Sarah Chen",
+      "status": "Completed",
+      "progress": 100,
+      "createdAt": "2025-10-01T00:00:00Z",
+      "updatedAt": "2026-02-28T00:00:00Z",
+      "tags": [
+        "training",
+        "literacy",
+        "upskilling",
+        "curriculum"
+      ],
+      "notes": "200+ employees trained. Now embedded in onboarding. Advanced module in planning.",
+      "dependencies": [
+        "node-004"
+      ],
+      "links": [],
+      "artifacts": [
+        "AI Foundations Deck.pptx",
+        "Participant Workbook.pdf"
+      ],
+      "position": {
+        "x": 520,
+        "y": 640
+      }
+    },
+    {
+      "id": "node-008",
+      "title": "LLM Evaluation Framework",
+      "description": "R&D initiative to build a reusable benchmark harness for evaluating LLMs on cost, latency, accuracy, safety, and task-specific performance.",
+      "category": "Research & Development",
+      "owner": "Rahul Nair",
+      "status": "In Progress",
+      "progress": 45,
+      "createdAt": "2026-03-01T00:00:00Z",
+      "updatedAt": "2026-05-20T00:00:00Z",
+      "tags": [
+        "llm",
+        "evaluation",
+        "benchmarking",
+        "r&d"
+      ],
+      "notes": "GPT-4o and Claude 3.5 Sonnet benchmarked. Gemini runs in progress.",
+      "dependencies": [],
+      "links": [],
+      "artifacts": [
+        "LLM Eval Results v0.3.xlsx"
+      ],
+      "position": {
+        "x": 880,
+        "y": 540
+      }
+    },
+    {
+      "id": "node-009",
+      "title": "Prompt Engineering Playbook",
+      "description": "Reusable library of prompt patterns, chain-of-thought templates, and system prompt blueprints for common enterprise AI tasks.",
+      "category": "Research & Development",
+      "owner": "Rahul Nair",
+      "status": "In Progress",
+      "progress": 60,
+      "createdAt": "2026-02-10T00:00:00Z",
+      "updatedAt": "2026-05-12T00:00:00Z",
+      "tags": [
+        "prompts",
+        "templates",
+        "playbook",
+        "reusable"
+      ],
+      "notes": "30 patterns documented. RAG and agent patterns coming next.",
+      "dependencies": [],
+      "links": [],
+      "artifacts": [
+        "Prompt Playbook v0.5.md"
+      ],
+      "position": {
+        "x": 520,
+        "y": 420
+      }
+    },
+    {
+      "id": "node-010",
+      "title": "Shift AI Offering",
+      "description": "Client-facing AI transformation offering: workshops, maturity assessment, roadmap design, and implementation sprints packaged as a consulting engagement.",
+      "category": "Offering Creation",
+      "owner": "Aditya Rao",
+      "status": "Planned",
+      "progress": 30,
+      "createdAt": "2026-04-01T00:00:00Z",
+      "updatedAt": "2026-05-05T00:00:00Z",
+      "tags": [
+        "shift",
+        "offering",
+        "consulting",
+        "client-facing"
+      ],
+      "notes": "Positioning workshop scheduled for June. Drawing from internal Customer Zero learnings.",
+      "dependencies": [
+        "node-001",
+        "node-003",
+        "node-004"
+      ],
+      "links": [],
+      "artifacts": [],
+      "position": {
+        "x": 520,
+        "y": 50
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-001",
+      "source": "node-001",
+      "target": "node-004",
+      "relationship": "COMPLIES_WITH"
+    },
+    {
+      "id": "edge-002",
+      "source": "node-002",
+      "target": "node-009",
+      "relationship": "DEPENDS_ON"
+    },
+    {
+      "id": "edge-003",
+      "source": "node-003",
+      "target": "node-008",
+      "relationship": "DEPENDS_ON"
+    },
+    {
+      "id": "edge-004",
+      "source": "node-003",
+      "target": "node-009",
+      "relationship": "REUSES"
+    },
+    {
+      "id": "edge-005",
+      "source": "node-008",
+      "target": "node-003",
+      "relationship": "INFLUENCES"
+    },
+    {
+      "id": "edge-006",
+      "source": "node-005",
+      "target": "node-004",
+      "relationship": "DEPENDS_ON"
+    },
+    {
+      "id": "edge-007",
+      "source": "node-010",
+      "target": "node-001",
+      "relationship": "REUSES"
+    },
+    {
+      "id": "edge-008",
+      "source": "node-010",
+      "target": "node-003",
+      "relationship": "REUSES"
+    },
+    {
+      "id": "edge-009",
+      "source": "node-007",
+      "target": "node-004",
+      "relationship": "RELATED_TO"
+    },
+    {
+      "id": "edge-010",
+      "source": "node-009",
+      "target": "node-001",
+      "relationship": "INFLUENCES"
+    }
+  ]
+}

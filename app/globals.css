@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #030712;
+  --foreground: #f9fafb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* React Flow overrides for dark theme */
+.react-flow__renderer {
+  background: #030712;
+}
+
+.react-flow__pane {
+  cursor: grab;
+}
+
+.react-flow__pane:active {
+  cursor: grabbing;
+}
+
+.react-flow__minimap {
+  background: #111827 !important;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(99, 102, 241, 0.08);
+}
+
+.react-flow__controls {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.react-flow__controls-button {
+  background: #111827;
+  border: 1px solid #1f2937 !important;
+  border-radius: 6px !important;
+  color: #9ca3af;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-flow__controls-button:hover {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+.react-flow__controls-button svg {
+  fill: currentColor;
+  max-width: 14px;
+  max-height: 14px;
+}
+
+.react-flow__handle {
+  width: 10px !important;
+  height: 10px !important;
+  background: #4b5563 !important;
+  border: 2px solid #111827 !important;
+  transition: background 0.15s;
+}
+
+.react-flow__handle:hover {
+  background: #6366f1 !important;
+}
+
+.react-flow__connection-path {
+  stroke: #6366f1;
+  stroke-width: 2;
+}
+
+/* Hide the React Flow logo */
+.react-flow__panel.react-flow__attribution {
+  display: none;
+}

@@ -1,0 +1,196 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Users & Auth ────────────────────────────────────────────
+model User {
+  id         String    @id @default(uuid())
+  name       String
+  email      String    @unique
+  password   String
+  role       String    @default("member") // admin, manager, member, viewer
+  department String    @default("")
+  avatar     String    @default("")
+  isActive   Boolean   @default(true)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @default(now()) @updatedAt
+  deletedAt  DateTime?
+
+  // Relations
+  ownedActivities    ActivityNode[] @relation("NodeOwner")
+  assignedActivities ActivityNode[] @relation("NodeAssignee")
+  createdActivities  ActivityNode[] @relation("NodeCreator")
+  updates            NodeUpdate[]
+  assignedMilestones Milestone[]
+  notifications      Notification[]
+  auditLogs          AuditLog[]
+  attachments        Attachment[]
+
+  @@index([role])
+  @@index([isActive])
+}
+
+// ─── Activity Nodes ──────────────────────────────────────────
+model ActivityNode {
+  id          String    @id @default(uuid())
+  title       String
+  description String    @default("")
+  category    String
+  owner       String    @default("") // Legacy text field
+  ownerId     String? // FK to User
+  assigneeId  String? // FK to User
+  createdById String? // FK to User
+  status      String    @default("Idea")
+  priority    String    @default("Medium")
+  progress    Int       @default(0)
+  startDate   DateTime?
+  dueDate     DateTime?
+  tags        String[]
+  notes       String    @default("")
+  links       String[]
+  artifacts   String[]
+  positionX   Float     @default(0)
+  positionY   Float     @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  // Relations
+  ownerUser   User? @relation("NodeOwner", fields: [ownerId], references: [id], onDelete: SetNull)
+  assignee    User? @relation("NodeAssignee", fields: [assigneeId], references: [id], onDelete: SetNull)
+  createdBy   User? @relation("NodeCreator", fields: [createdById], references: [id], onDelete: SetNull)
+  sourceEdges ActivityEdge[] @relation("SourceEdge")
+  targetEdges ActivityEdge[] @relation("TargetEdge")
+  updates     NodeUpdate[]
+  milestones  Milestone[]
+  attachments Attachment[]
+
+  @@index([category])
+  @@index([status])
+  @@index([priority])
+  @@index([ownerId])
+  @@index([assigneeId])
+  @@index([createdById])
+  @@index([deletedAt])
+}
+
+// ─── Edges / Relationships ───────────────────────────────────
+model ActivityEdge {
+  id           String   @id @default(uuid())
+  sourceId     String
+  targetId     String
+  relationship String   @default("RELATED_TO")
+  createdAt    DateTime @default(now())
+
+  source ActivityNode @relation("SourceEdge", fields: [sourceId], references: [id], onDelete: Cascade)
+  target ActivityNode @relation("TargetEdge", fields: [targetId], references: [id], onDelete: Cascade)
+
+  @@unique([sourceId, targetId, relationship])
+  @@index([sourceId])
+  @@index([targetId])
+}
+
+// ─── Activity Updates / Logs ─────────────────────────────────
+model NodeUpdate {
+  id        String   @id @default(uuid())
+  nodeId    String
+  text      String
+  author    String   @default("") // Legacy text field
+  userId    String? // FK to User
+  createdAt DateTime @default(now())
+
+  node ActivityNode @relation(fields: [nodeId], references: [id], onDelete: Cascade)
+  user User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([nodeId])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+// ─── Milestones ──────────────────────────────────────────────
+model Milestone {
+  id         String    @id @default(uuid())
+  nodeId     String
+  title      String
+  dueDate    DateTime?
+  completed  Boolean   @default(false)
+  assigneeId String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @default(now()) @updatedAt
+
+  node     ActivityNode @relation(fields: [nodeId], references: [id], onDelete: Cascade)
+  assignee User?        @relation(fields: [assigneeId], references: [id], onDelete: SetNull)
+
+  @@index([nodeId])
+  @@index([assigneeId])
+  @@index([dueDate])
+  @@index([completed])
+}
+
+// ─── Notifications ───────────────────────────────────────────
+model Notification {
+  id         String   @id @default(uuid())
+  userId     String
+  type       String // milestone_overdue, status_change, assignment, mention, update, blocked
+  title      String
+  message    String
+  entityId   String? // Related entity ID (node, milestone, etc.)
+  entityType String? // "activity", "milestone", "update"
+  isRead     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isRead])
+  @@index([createdAt])
+  @@index([entityId])
+}
+
+// ─── Audit Log ───────────────────────────────────────────────
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String
+  action     String // create, update, delete, login, logout
+  entityType String // user, activity, milestone, edge, update
+  entityId   String?
+  details    String   @default("{}") // JSON string
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([entityType])
+  @@index([createdAt])
+}
+
+// ─── Attachments ─────────────────────────────────────────────
+model Attachment {
+  id       String   @id @default(uuid())
+  nodeId   String
+  userId   String?
+  fileName String
+  fileUrl  String
+  fileType String   @default("")
+  fileSize Int      @default(0)
+  createdAt DateTime @default(now())
+
+  node ActivityNode @relation(fields: [nodeId], references: [id], onDelete: Cascade)
+  user User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([nodeId])
+  @@index([userId])
+}
+
+// ─── App Settings ────────────────────────────────────────────
+model AppSetting {
+  id        String   @id @default(uuid())
+  key       String   @unique
+  value     String   @default("")
+  updatedAt DateTime @updatedAt
+}
